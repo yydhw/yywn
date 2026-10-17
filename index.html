@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>柠明科技 · 个人主页</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <!-- 如需替换站点 Favicon，请将 ./img/Favicon/favicon.ico 替换为你的图标，并保持路径一致 -->
+  <link rel="icon" type="image/x-icon" href="./img/Favicon/favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- 如需切换全局字体或增加自定义样式，可在下方 style 中修改 -->
+  <style>
+    body {
+      font-family: 'Inter', 'Noto Sans SC', 'PingFang SC', 'Microsoft YaHei', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    }
+    /* 阿里系线性图标统一样式，修改颜色/粗细可改 stroke */
+    .icon-ali {
+      width: 20px;
+      height: 20px;
+      stroke: #334155;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+    /* 入场动画：轻盈上移 + 透明渐显 + 轻微缩放，苹果风格 */
+    @keyframes fadeUpSoft {
+      0% { opacity: 0; transform: translateY(18px) scale(0.985); filter: blur(4px); }
+      60% { opacity: 1; transform: translateY(-2px) scale(1.002); filter: blur(0px); }
+      100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0px); }
+    }
+    .animate-soft { animation: fadeUpSoft 0.7s ease-out both; }
+  </style>
+</head>
+<body class="min-h-screen flex justify-center items-start bg-gradient-to-br from-sky-100 via-pink-100 to-indigo-100 text-slate-900 relative overflow-x-hidden">
+  <!-- 渐变与模糊背景层：更轻、更柔和 -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <div class="absolute inset-0 bg-gradient-to-br from-sky-300 via-pink-200 to-indigo-300 opacity-90 blur-[120px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_20%_30%,rgba(255,255,255,0.78),transparent_38%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.5),transparent_35%),radial-gradient(circle_at_50%_78%,rgba(255,255,255,0.45),transparent_38%)] opacity-85 mix-blend-screen"></div>
+    <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,0.36),rgba(255,255,255,0.16))]"></div>
+  </div>
+
+  <!-- max-w 控制内容宽度，想更宽可改为 max-w-xl/md/2xl -->
+  <main class="relative z-10 w-full max-w-md md:max-w-xl px-4 sm:px-5 py-8 flex flex-col gap-5">
+    <!-- 个人信息卡片 -->
+    <section class="bg-white/40 backdrop-blur-2xl rounded-3xl shadow-[0_20px_60px_-28px_rgba(15,23,42,0.45)] p-5 flex gap-4 animate-soft" style="animation-delay:0.05s">
+      <!-- 头像更换：将 src 指向你的头像文件路径/URL；轻柔双层渐变头像框 -->
+      <div class="h-16 w-16 rounded-full bg-gradient-to-br from-white/85 via-sky-100 to-indigo-100 p-[2.5px] shadow-[0_12px_28px_-18px_rgba(15,23,42,0.45)]">
+        <div class="h-full w-full rounded-full bg-white/70 p-[2px] backdrop-blur-xl ring-1 ring-white/60 shadow-[0_8px_20px_-16px_rgba(15,23,42,0.35)]">
+          <img src="./img/logo/tx.jpg" alt="头像" class="h-full w-full rounded-full object-cover" />
+        </div>
+      </div>
+      <div class="flex-1 space-y-2">
+        <div>
+          <!-- 名称/标语可直接修改下方文本 -->
+          <div class="text-2xl font-bold leading-tight text-slate-900">柠明科技</div>
+          <div class="text-sm text-slate-600">数字体验 · 技术创新 · 品质交付</div>
+        </div>
+        <div id="time-beijing" class="text-xs text-slate-500">--月--日 --:-- 周--</div>
+        <!-- 标签可根据业务自定义，保持相同 class 即可保持风格 -->
+        <div class="flex flex-wrap gap-2 pt-1">
+          <span class="px-3 py-1 rounded-full text-xs font-semibold text-amber-900 bg-amber-100/90 shadow-[0_10px_26px_-20px_rgba(15,23,42,0.45)]">二次开发</span>
+          <span class="px-3 py-1 rounded-full text-xs font-semibold text-cyan-900 bg-cyan-100/90 shadow-[0_10px_26px_-20px_rgba(15,23,42,0.45)]">支付接口</span>
+          <span class="px-3 py-1 rounded-full text-xs font-semibold text-purple-900 bg-purple-100/90 shadow-[0_10px_26px_-20px_rgba(15,23,42,0.45)]">Laravel</span>
+          <span class="px-3 py-1 rounded-full text-xs font-semibold text-orange-900 bg-orange-100/90 shadow-[0_10px_26px_-20px_rgba(15,23,42,0.45)]">前端UI</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 菜单列表卡片（可点击跳转，换为阿里系矢量风格图标） -->
+    <section class="bg-white/40 backdrop-blur-2xl rounded-3xl shadow-[0_20px_60px_-28px_rgba(15,23,42,0.45)] p-2 divide-y divide-white/30 animate-soft" style="animation-delay:0.12s">
+      <!-- 如需替换跳转链接，修改 href 即可 -->
+      <a href="https://example.com/blog" class="flex items-center justify-between py-3 px-3 gap-3 rounded-2xl transition hover:bg-white/45 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60">
+        <div class="flex items-center gap-5">
+          <span class="h-10 w-10 grid place-items-center rounded-2xl bg-gradient-to-br from-sky-100 to-sky-200 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.35)]">
+            <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 20h4l10.5-10.5a1.5 1.5 0 0 0 0-2.12l-4.88-4.88a1.5 1.5 0 0 0-2.12 0L4 13v7Z" />
+              <path d="M13.5 5.5 18 10" />
+            </svg>
+          </span>
+          <div>
+            <div class="font-semibold text-base text-slate-900">柠明科技</div>
+            <div class="text-xs text-slate-600">柠明科技</div>
+          </div>
+        </div>
+        <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <a href="https://example.com/projects" class="flex items-center justify-between py-3 px-3 gap-3 rounded-2xl transition hover:bg-white/45 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60">
+        <div class="flex items-center gap-5">
+          <span class="h-10 w-10 grid place-items-center rounded-2xl bg-gradient-to-br from-teal-100 to-emerald-200 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.35)]">
+            <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="5" cy="5" r="2.2" />
+              <circle cx="5" cy="19" r="2.2" />
+              <circle cx="17" cy="12" r="2.2" />
+              <path d="M5 7v10" />
+              <path d="M7.4 5H14a3 3 0 0 1 3 3v1" />
+              <path d="M7.4 19H14" />
+            </svg>
+          </span>
+          <div>
+            <div class="font-semibold text-base text-slate-900">柠明科技</div>
+            <div class="text-xs text-slate-600">柠明科技</div>
+          </div>
+        </div>
+        <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <a href="https://example.com/photos" class="flex items-center justify-between py-3 px-3 gap-3 rounded-2xl transition hover:bg-white/45 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60">
+        <div class="flex items-center gap-5">
+          <span class="h-10 w-10 grid place-items-center rounded-2xl bg-gradient-to-br from-purple-100 to-pink-200 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.35)]">
+            <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="4" y="7" width="16" height="12" rx="3" />
+              <path d="M9.5 7V5.8A1.8 1.8 0 0 1 11.3 4h1.4A1.8 1.8 0 0 1 14.5 5.8V7" />
+              <circle cx="12" cy="13" r="4" />
+            </svg>
+          </span>
+          <div>
+            <div class="font-semibold text-base text-slate-900">柠明科技</div>
+            <div class="text-xs text-slate-600">柠明科技</div>
+          </div>
+        </div>
+        <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <a href="https://example.com/reading" class="flex items-center justify-between py-3 px-3 gap-3 rounded-2xl transition hover:bg-white/45 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60">
+        <div class="flex items-center gap-5">
+          <span class="h-10 w-10 grid place-items-center rounded-2xl bg-gradient-to-br from-amber-100 to-orange-200 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.35)]">
+            <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M6.5 5h8.5a2.5 2.5 0 0 1 2.5 2.5V20H9a3 3 0 0 0-3 3V5Z" />
+              <path d="M6 9h13" />
+            </svg>
+          </span>
+          <div>
+            <div class="font-semibold text-base text-slate-900">柠明科技</div>
+            <div class="text-xs text-slate-600">柠明科技</div>
+          </div>
+        </div>
+        <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <a href="https://example.com/music" class="flex items-center justify-between py-3 px-3 gap-3 rounded-2xl transition hover:bg-white/45 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60">
+        <div class="flex items-center gap-5">
+          <span class="h-10 w-10 grid place-items-center rounded-2xl bg-gradient-to-br from-indigo-100 to-blue-200 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.35)]">
+            <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15 6v9.2a2.8 2.8 0 1 1-1.6-2.56V8.4l5-1.4v8.2a2.8 2.8 0 1 1-1.6-2.56" />
+            </svg>
+          </span>
+          <div>
+            <div class="font-semibold text-base text-slate-900">柠明科技</div>
+            <div class="text-xs text-slate-600">柠明科技</div>
+          </div>
+        </div>
+        <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+      <a href="https://example.com/about" class="flex items-center justify-between py-3 px-3 gap-3 rounded-2xl transition hover:bg-white/45 active:scale-[0.99] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60">
+        <div class="flex items-center gap-5">
+          <span class="h-10 w-10 grid place-items-center rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 shadow-[0_10px_30px_-20px_rgba(15,23,42,0.35)]">
+            <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="9" r="4" />
+              <path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+            </svg>
+          </span>
+          <div>
+            <div class="font-semibold text-base text-slate-900">柠明科技</div>
+            <div class="text-xs text-slate-600">柠明科技</div>
+          </div>
+        </div>
+        <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
+    </section>
+
+    <!-- 社交栏卡片（可点击） -->
+    <section class="bg-white/40 backdrop-blur-2xl rounded-3xl shadow-[0_20px_60px_-28px_rgba(15,23,42,0.45)] p-4 animate-soft" style="animation-delay:0.18s">
+      <div class="grid grid-cols-4 text-center gap-3 text-lg text-slate-800">
+        <a href="https://example.com/profile" class="flex items-center justify-center h-12 rounded-2xl bg-white/45 backdrop-blur-xl shadow-[0_14px_40px_-32px_rgba(15,23,42,0.6)] transition hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60">
+          <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="9" r="4" />
+            <path d="M6 20c0-3.3 2.7-6 6-6s6 2.7 6 6" />
+          </svg>
+          <span class="sr-only">柠明科技</span>
+        </a>
+        <a href="mailto:hello@example.com" class="flex items-center justify-center h-12 rounded-2xl bg-white/45 backdrop-blur-xl shadow-[0_14px_40px_-32px_rgba(15,23,42,0.6)] transition hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60">
+          <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 7h16a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V8a1 1 0 0 1 1-1Z" />
+            <path d="M4 9l8 5 8-5" />
+          </svg>
+          <span class="sr-only">柠明科技</span>
+        </a>
+        <a href="https://example.com/notifications" class="flex items-center justify-center h-12 rounded-2xl bg-white/45 backdrop-blur-xl shadow-[0_14px_40px_-32px_rgba(15,23,42,0.6)] transition hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60">
+          <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M18 16v-4.2a6 6 0 0 0-12 0V16" />
+            <path d="M5 16h14" />
+            <path d="M10 19a2 2 0 0 0 4 0" />
+          </svg>
+          <span class="sr-only">柠明科技</span>
+        </a>
+        <a href="https://example.com/chat" class="flex items-center justify-center h-12 rounded-2xl bg-white/45 backdrop-blur-xl shadow-[0_14px_40px_-32px_rgba(15,23,42,0.6)] transition hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60">
+          <svg class="icon-ali" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 6h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1h-5.5L9 20v-4H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z" />
+          </svg>
+          <span class="sr-only">柠明科技</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 语录卡片 -->
+    <!-- 语录卡片：想自定义内容可编辑 quotes 数组或默认文案 -->
+    <section class="bg-white/40 backdrop-blur-2xl rounded-3xl shadow-[0_20px_60px_-28px_rgba(15,23,42,0.45)] px-5 py-6 text-center space-y-3 animate-soft" style="animation-delay:0.24s">
+      <div id="quote-text" class="text-base leading-relaxed text-slate-800">愿所有的美好都能得到祝福。</div>
+      <div id="quote-author" class="text-sm text-slate-600">——「miHoYo」</div>
+      <button id="quote-switch" type="button" class="text-xs text-slate-500 underline underline-offset-4 decoration-slate-300 hover:text-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300/60 active:scale-[0.99]">轻点更换</button>
+    </section>
+
+    <!-- 页脚文字 -->
+    <!-- 版权年份/文案可在此处修改 -->
+    <footer class="text-center text-xs text-slate-600 pt-1 animate-soft" style="animation-delay:0.30s">
+      <div>版权所有 © 2026 柠明科技 · 保留所有权利</div>
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      // 北京时间实时时钟：若不需要可移除 setInterval 与 tick 调用
+      const timeEl = document.getElementById('time-beijing');
+      const weekdayMap = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+      function pad(n) { return n.toString().padStart(2, '0'); }
+      function tick() {
+        if (!timeEl) return;
+        const now = new Date();
+        const fmt = new Intl.DateTimeFormat('zh-CN', {
+          timeZone: 'Asia/Shanghai',
+          hour12: false,
+          hour: '2-digit',
+          minute: '2-digit',
+          month: 'numeric',
+          day: 'numeric',
+          weekday: 'short'
+        }).formatToParts(now)
+          .reduce((acc, part) => ({ ...acc, [part.type]: part.value }), {});
+
+        const hour = fmt.hour ?? '--';
+        const minute = fmt.minute ?? '--';
+        const month = fmt.month ?? '--';
+        const day = fmt.day ?? '--';
+        // 部分浏览器 weekday 会返回“周四”，否则 fallback
+        const weekday = fmt.weekday ?? weekdayMap[new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Shanghai' })).getDay()];
+
+        timeEl.textContent = `${month}月${day}日 ${hour}:${minute} ${weekday}`;
+      }
+      tick();
+      setInterval(tick, 1000);
+
+      // 语录池：按需增删语录
+      const quotes = [
+        { text: '愿所有的美好都能得到祝福。', author: '——「miHoYo」' },
+        { text: 'Stay hungry, stay foolish.', author: '—— Steve Jobs' },
+        { text: 'Code is like humor. When you have to explain it, it’s bad.', author: '—— Cory House' },
+        { text: 'Simplicity is the soul of efficiency.', author: '—— Austin Freeman' },
+        { text: '行到水穷处，坐看云起时。', author: '—— 王维' }
+      ];
+
+      const textEl = document.getElementById('quote-text');
+      const authorEl = document.getElementById('quote-author');
+      const switchBtn = document.getElementById('quote-switch');
+
+      function nextQuote() {
+        if (!textEl || !authorEl) return;
+        const current = textEl.textContent?.trim();
+        const pool = quotes.filter((q) => q.text !== current);
+        const picked = pool[Math.floor(Math.random() * pool.length)];
+        textEl.textContent = picked.text;
+        authorEl.textContent = picked.author;
+      }
+
+      switchBtn?.addEventListener('click', nextQuote);
+    })();
+  </script>
+</body>
+</html>
